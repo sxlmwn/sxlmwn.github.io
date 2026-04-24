@@ -1,4 +1,5 @@
 import { ArrowRight, Sparkles } from "lucide-react";
+import avatar from "@/assets/avatar.png";
 
 export const Hero = () => {
   return (
@@ -15,12 +16,27 @@ export const Hero = () => {
             Available for collaborations & internships
           </div>
 
-          <div className="space-y-4">
-            <p className="text-primary font-medium tracking-widest uppercase text-sm">Hi, I'm</p>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05]">
-              <span className="block">Salman</span>
-              <span className="block text-gradient">Younus</span>
-            </h1>
+          <div className="flex items-center gap-5">
+            {/* Glassy avatar — mobile/tablet inline */}
+            <div className="lg:hidden relative shrink-0">
+              <div className="absolute inset-0 rounded-full bg-gradient-primary blur-xl opacity-60" />
+              <div className="glass relative w-20 h-20 rounded-full p-1 overflow-hidden">
+                <img
+                  src={avatar}
+                  alt="Salman Younus avatar"
+                  width={160}
+                  height={160}
+                  className="w-full h-full rounded-full object-cover"
+                />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <p className="text-primary font-medium tracking-widest uppercase text-sm">Hi, I'm</p>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05]">
+                <span className="block">Salman</span>
+                <span className="block text-gradient">Younus</span>
+              </h1>
+            </div>
           </div>
 
           <p className="text-lg text-muted-foreground max-w-xl leading-relaxed">
@@ -47,8 +63,37 @@ export const Hero = () => {
           </div>
         </div>
 
-        {/* Right: Stat cards */}
+        {/* Right: Avatar + Stat cards */}
         <div className="lg:col-span-5 grid grid-cols-2 gap-4 animate-scale-in">
+          {/* Glassy avatar — desktop hero */}
+          <div className="hidden lg:block col-span-2 relative">
+            <div className="absolute -inset-6 bg-gradient-primary opacity-30 blur-3xl rounded-full animate-pulse-glow" />
+            <div className="orb w-40 h-40 bg-accent/40 -top-8 -right-4" />
+            <div className="glass-card relative p-5 flex items-center gap-5">
+              <div className="relative shrink-0">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-primary blur-md opacity-70" />
+                <div className="glass-strong relative w-28 h-28 rounded-2xl p-1 overflow-hidden">
+                  <img
+                    src={avatar}
+                    alt="Salman Younus avatar"
+                    width={224}
+                    height={224}
+                    className="w-full h-full rounded-xl object-cover"
+                  />
+                </div>
+                <span className="absolute -bottom-1 -right-1 flex h-5 w-5">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-60 animate-ping" />
+                  <span className="relative inline-flex rounded-full h-5 w-5 bg-gradient-primary border-2 border-background" />
+                </span>
+              </div>
+              <div className="space-y-1">
+                <p className="text-xs font-semibold tracking-widest uppercase text-primary">Profile</p>
+                <h3 className="text-xl font-display font-semibold">Salman Younus</h3>
+                <p className="text-xs text-muted-foreground">SE Student • AI / DevOps / Cyber</p>
+              </div>
+            </div>
+          </div>
+
           <div className="glass-card col-span-2 p-6 space-y-3">
             <p className="text-xs font-semibold tracking-widest uppercase text-primary">Current Focus</p>
             <h3 className="text-2xl font-display font-semibold">AI & Machine Learning</h3>
