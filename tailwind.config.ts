@@ -12,9 +12,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Instrument Serif', 'Geist', 'serif'],
-        sans: ['Geist', 'SF Pro Display', 'system-ui', 'sans-serif'],
-        serif: ['Instrument Serif', 'serif'],
+        display: ['Geist', '-apple-system', 'SF Pro Display', 'system-ui', 'sans-serif'],
+        sans: ['Geist', '-apple-system', 'SF Pro Display', 'SF Pro Text', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
