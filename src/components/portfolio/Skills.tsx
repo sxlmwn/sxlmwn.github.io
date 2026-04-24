@@ -1,58 +1,91 @@
-const groups = [
+import { motion } from "framer-motion";
+import { Brain, Cloud, Shield } from "lucide-react";
+
+const tracks = [
   {
-    label: "Languages",
-    items: ["Java", "C++", "Python", "JavaScript", "SQL"],
+    icon: Brain,
+    emoji: "🤖",
+    title: "AI & ML Engineering",
+    tint: "tint-ai",
+    accentClass: "text-[hsl(var(--tint-ai))]",
+    skills: [
+      "Python", "NumPy", "Pandas", "Matplotlib", "Scikit-learn",
+      "Neural Networks", "CNNs", "RNNs", "Transformers", "BERT",
+      "GPT architectures", "LangChain", "RAG pipelines", "FastAPI",
+      "MLOps", "Docker", "AWS / GCP",
+    ],
   },
   {
-    label: "AI / ML",
-    items: ["Model Training", "Fine-tuning", "PyTorch", "TensorFlow", "Hugging Face", "Pandas"],
+    icon: Cloud,
+    emoji: "☁️",
+    title: "DevOps & Cloud",
+    tint: "tint-devops",
+    accentClass: "text-[hsl(var(--tint-devops))]",
+    skills: [
+      "Linux", "Git", "Docker", "GitHub Actions", "CI/CD",
+      "Terraform", "Ansible", "Prometheus", "Grafana",
+      "AWS", "GCP", "Azure", "Kubernetes", "Helm",
+      "RBAC", "ArgoCD", "Flux", "GitOps", "SRE",
+    ],
   },
   {
-    label: "DevOps (Emergent)",
-    items: ["Git", "Docker", "Linux", "CI/CD", "Bash"],
-  },
-  {
-    label: "Cybersecurity (Learning)",
-    items: ["Networking", "Cryptography", "OWASP", "Pentesting Basics"],
+    icon: Shield,
+    emoji: "🛡️",
+    title: "Cybersecurity",
+    tint: "tint-security",
+    accentClass: "text-[hsl(var(--tint-security))]",
+    skills: [
+      "Kali Linux", "Wireshark", "OSINT", "Nmap", "OWASP Top 10",
+      "Metasploit", "Privilege Escalation", "IDS / IPS", "SIEM",
+      "Malware Analysis", "Incident Response", "Active Directory",
+      "Wireless Security", "Reverse Engineering", "CTFs",
+    ],
   },
 ];
 
 export const Skills = () => {
   return (
-    <section id="skills" className="relative py-24 px-6">
-      <div className="container max-w-6xl">
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
-          <p className="text-primary font-medium tracking-widest uppercase text-sm">Toolkit</p>
-          <h2 className="text-4xl sm:text-5xl font-bold">
-            Skills <span className="text-gradient">in motion</span>
+    <section id="skills" className="relative py-28 px-6">
+      <div className="container relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ type: "spring", stiffness: 60, damping: 18 }}
+          className="text-center mb-14 space-y-4"
+        >
+          <div className="glass-chip mx-auto">Skills & Stack</div>
+          <h2 className="font-serif text-5xl sm:text-6xl tracking-tight">
+            The <span className="italic text-shimmer">toolkit</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            A snapshot of the languages and domains I work with — and the ones I'm actively leveling up in.
+          <p className="text-foreground/70 max-w-xl mx-auto font-light">
+            Three disciplines, deeply intertwined. Each pillar built on real projects, labs, and certifications in motion.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-5">
-          {groups.map((g, gi) => (
-            <div
-              key={g.label}
-              className="glass-card p-6 sm:p-8 animate-fade-up"
-              style={{ animationDelay: `${gi * 80}ms` }}
+        <div className="grid lg:grid-cols-3 gap-6">
+          {tracks.map((t, i) => (
+            <motion.div
+              key={t.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ type: "spring", stiffness: 60, damping: 18, delay: i * 0.12 }}
+              className={`glass-card ${t.tint} p-7 space-y-5 flex flex-col`}
             >
-              <div className="flex items-center justify-between mb-5">
-                <h3 className="text-lg font-display font-semibold">{g.label}</h3>
-                <span className="text-xs text-muted-foreground">{g.items.length} skills</span>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-2xl glass-strong grid place-items-center text-2xl">
+                  {t.emoji}
+                </div>
+                <h3 className={`font-serif text-2xl ${t.accentClass}`}>{t.title}</h3>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {g.items.map((s) => (
-                  <span
-                    key={s}
-                    className="glass px-3.5 py-1.5 rounded-full text-sm text-foreground/90 hover:border-primary/40 hover:text-primary-glow transition-colors cursor-default"
-                  >
-                    {s}
-                  </span>
+
+              <div className="flex flex-wrap gap-2 pt-1">
+                {t.skills.map((s) => (
+                  <span key={s} className="glass-chip">{s}</span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

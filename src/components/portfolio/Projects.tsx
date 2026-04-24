@@ -1,78 +1,84 @@
-import { Github, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import { Brain, Cloud, Shield, Cpu } from "lucide-react";
 
 const projects = [
   {
-    title: "Neural Sentiment Engine",
-    desc: "Trained a transformer-based sentiment model on multilingual datasets with custom fine-tuning pipeline.",
-    tags: ["Python", "PyTorch", "Hugging Face"],
-    accent: "from-primary to-secondary",
+    icon: Brain,
+    title: "RAG-Powered Knowledge Engine",
+    description: "LangChain + FastAPI pipeline indexing technical docs with semantic retrieval and a transformer reranker.",
+    tag: "AI / ML",
+    tint: "tint-ai",
   },
   {
-    title: "CipherGuard",
-    desc: "A learning project exploring symmetric/asymmetric cryptography with a clean CLI for file encryption.",
-    tags: ["C++", "Cryptography", "CLI"],
-    accent: "from-secondary to-accent",
+    icon: Cloud,
+    title: "Self-Healing K8s Platform",
+    description: "Terraform-provisioned cluster with ArgoCD GitOps, Prometheus/Grafana observability, and auto-remediation.",
+    tag: "DevOps",
+    tint: "tint-devops",
   },
   {
-    title: "DevOps Dashboard",
-    desc: "A container monitoring panel that surfaces CI/CD events, build status and resource usage at a glance.",
-    tags: ["Docker", "Python", "DevOps"],
-    accent: "from-accent to-primary",
+    icon: Shield,
+    title: "Red-Team Lab Suite",
+    description: "Active Directory home lab with curated CTF chains — recon, exploitation, privesc, and post-exploitation.",
+    tag: "Security",
+    tint: "tint-security",
   },
   {
-    title: "Java Algo Visualizer",
-    desc: "Interactive visualizer for sorting and graph algorithms — built to teach myself complexity intuitively.",
-    tags: ["Java", "Swing", "Algorithms"],
-    accent: "from-primary-glow to-primary",
+    icon: Cpu,
+    title: "LLM-Driven SOC Assistant",
+    description: "Fine-tuned model parsing SIEM alerts into prioritized incident summaries with playbook recommendations.",
+    tag: "AI × Security",
+    tint: "tint-ai",
   },
 ];
 
 export const Projects = () => {
   return (
-    <section id="projects" className="relative py-24 px-6">
-      <div className="container max-w-6xl">
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-4">
-          <p className="text-primary font-medium tracking-widest uppercase text-sm">Selected Work</p>
-          <h2 className="text-4xl sm:text-5xl font-bold">
-            Projects I'm <span className="text-gradient">proud of</span>
+    <section id="projects" className="relative py-28 px-6">
+      <div className="container relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ type: "spring", stiffness: 60, damping: 18 }}
+          className="text-center mb-14 space-y-4"
+        >
+          <div className="glass-chip mx-auto">In the Works</div>
+          <h2 className="font-serif text-5xl sm:text-6xl tracking-tight">
+            Selected <span className="italic text-shimmer">projects</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            A mix of AI experiments, security explorations, and engineering builds.
+          <p className="text-foreground/70 max-w-xl mx-auto font-light">
+            Real builds across the three tracks. Live demos & write-ups arriving through 2026.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {projects.map((p, i) => (
-            <article
+            <motion.div
               key={p.title}
-              className="glass-card group p-7 sm:p-8 flex flex-col animate-fade-up"
-              style={{ animationDelay: `${i * 100}ms` }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ type: "spring", stiffness: 60, damping: 18, delay: i * 0.1 }}
+              className={`glass-card ${p.tint} p-7 space-y-4 shimmer-overlay`}
             >
-              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${p.accent} mb-6 glow-ring`} />
-              <h3 className="text-2xl font-display font-semibold mb-3">{p.title}</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6 flex-1">{p.desc}</p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {p.tags.map((t) => (
-                  <span key={t} className="text-xs px-2.5 py-1 rounded-full glass text-muted-foreground">
-                    {t}
-                  </span>
-                ))}
+              <div className="flex items-start justify-between gap-4 relative z-10">
+                <div className="w-14 h-14 rounded-2xl glass-strong grid place-items-center">
+                  <p.icon className="w-6 h-6 text-primary" />
+                </div>
+                <span className="glass-chip text-[10px] uppercase tracking-widest">{p.tag}</span>
               </div>
-              <div className="flex gap-3">
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-foreground/90 hover:text-primary-glow transition-colors"
-                >
-                  <Github className="w-4 h-4" /> Code
-                </a>
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-foreground/90 hover:text-primary-glow transition-colors"
-                >
-                  <ExternalLink className="w-4 h-4" /> Live
-                </a>
+              <h3 className="font-serif text-2xl leading-tight relative z-10">{p.title}</h3>
+              <p className="text-sm text-foreground/70 leading-relaxed font-light relative z-10">
+                {p.description}
+              </p>
+              <div className="pt-2 relative z-10">
+                <span className="glass-chip text-[10px]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                  Coming Soon
+                </span>
               </div>
-            </article>
+            </motion.div>
           ))}
         </div>
       </div>

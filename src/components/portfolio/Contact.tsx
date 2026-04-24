@@ -1,62 +1,54 @@
-import { Github, Linkedin, Mail, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Mail, Github, Linkedin } from "lucide-react";
+
+const links = [
+  { icon: Mail, label: "Email", href: "mailto:" },
+  { icon: Github, label: "GitHub", href: "https://github.com" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com" },
+];
 
 export const Contact = () => {
   return (
-    <section id="contact" className="relative py-24 px-6">
-      <div className="container max-w-4xl">
-        <div className="glass-card relative p-10 sm:p-16 text-center overflow-hidden">
-          <div className="orb w-80 h-80 bg-primary/40 -top-20 -left-20" />
-          <div className="orb w-80 h-80 bg-accent/30 -bottom-20 -right-20" />
+    <section id="contact" className="relative py-28 px-6">
+      <div className="container relative z-10 max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ type: "spring", stiffness: 60, damping: 18 }}
+          className="glass-card p-10 sm:p-14 text-center space-y-7"
+        >
+          <div className="glass-chip mx-auto">Let's Connect</div>
+          <h2 className="font-serif text-5xl sm:text-6xl tracking-tight">
+            Let's build <span className="italic text-shimmer">something</span>
+          </h2>
+          <p className="text-foreground/70 max-w-xl mx-auto font-light text-lg">
+            Open to internships, research, and ambitious side-projects across AI, DevOps, and Security.
+          </p>
 
-          <div className="relative z-10 space-y-6">
-            <p className="text-primary font-medium tracking-widest uppercase text-sm">Let's connect</p>
-            <h2 className="text-4xl sm:text-5xl font-bold">
-              Got an idea? <span className="text-gradient">Let's build it.</span>
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Open to collaborations, internships and conversations about AI, security and software craft.
-            </p>
-
-            <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
-              <a
-                href="#"
-                className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-gradient-primary text-primary-foreground font-medium glow-ring hover:scale-[1.02] transition-transform"
+          <div className="flex flex-wrap justify-center gap-3 pt-3">
+            {links.map((l, i) => (
+              <motion.a
+                key={l.label}
+                href={l.href}
+                target={l.href.startsWith("http") ? "_blank" : undefined}
+                rel={l.href.startsWith("http") ? "noreferrer" : undefined}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", stiffness: 80, damping: 16, delay: 0.1 + i * 0.08 }}
+                className="glass-button group"
               >
-                <Mail className="w-4 h-4" />
-                Send a Message
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </div>
-
-            <div className="flex items-center justify-center gap-3 pt-4">
-              <a
-                href="#"
-                aria-label="GitHub"
-                className="glass w-12 h-12 rounded-full grid place-items-center hover:border-primary/40 hover:text-primary-glow transition-colors"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                className="glass w-12 h-12 rounded-full grid place-items-center hover:border-primary/40 hover:text-primary-glow transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                aria-label="Email"
-                className="glass w-12 h-12 rounded-full grid place-items-center hover:border-primary/40 hover:text-primary-glow transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-            </div>
+                <l.icon className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
+                {l.label}
+              </motion.a>
+            ))}
           </div>
-        </div>
 
-        <p className="text-center text-sm text-muted-foreground mt-10">
-          © {new Date().getFullYear()} Salman Younus — Crafted with curiosity.
-        </p>
+          <p className="text-xs text-muted-foreground pt-6">
+            © {new Date().getFullYear()} Salman Younus · Crafted with iOS 26 liquid glass.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,60 +1,79 @@
-import { Brain, Code2, Shield, Cpu } from "lucide-react";
+import { motion } from "framer-motion";
+import { GraduationCap, Brain, Cloud, Shield } from "lucide-react";
 
-const highlights = [
-  {
-    icon: Brain,
-    title: "AI Model Training",
-    desc: "Fine-tuning, dataset curation, and experimenting with modern ML pipelines.",
-  },
-  {
-    icon: Code2,
-    title: "Multi-language Engineer",
-    desc: "Comfortable across Java, C++ and Python — picking the right tool for the job.",
-  },
-  {
-    icon: Cpu,
-    title: "DevOps Emergent",
-    desc: "Learning CI/CD, containers and infrastructure as code from the ground up.",
-  },
-  {
-    icon: Shield,
-    title: "Cybersecurity Curious",
-    desc: "Studying offensive & defensive security to build software that holds up.",
-  },
+const pillars = [
+  { icon: Brain, label: "AI / ML Engineering", tint: "tint-ai" },
+  { icon: Cloud, label: "Cloud-Native DevOps", tint: "tint-devops" },
+  { icon: Shield, label: "Offensive Cybersecurity", tint: "tint-security" },
 ];
+
+const coursework = ["Data Structures & Algorithms", "Object-Oriented Programming", "Databases", "Software Engineering"];
 
 export const About = () => {
   return (
-    <section id="about" className="relative py-24 px-6">
-      <div className="container max-w-6xl">
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <p className="text-primary font-medium tracking-widest uppercase text-sm">About Me</p>
-          <h2 className="text-4xl sm:text-5xl font-bold">
-            Building at the intersection of <span className="text-gradient">code & intelligence</span>
+    <section id="about" className="relative py-28 px-6">
+      <div className="container relative z-10 max-w-5xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ type: "spring", stiffness: 60, damping: 18 }}
+          className="text-center mb-12 space-y-4"
+        >
+          <div className="glass-chip mx-auto">
+            <GraduationCap className="w-3.5 h-3.5 text-primary" />
+            About
+          </div>
+          <h2 className="font-serif text-5xl sm:text-6xl tracking-tight">
+            Three paths, <span className="italic text-shimmer">one engineer</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
-            I'm a Software Engineering student passionate about AI, systems, and the security
-            that makes them trustworthy. Always learning, always shipping.
-          </p>
-        </div>
+        </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-5">
-          {highlights.map((h, i) => (
-            <div
-              key={h.title}
-              className="glass-card p-6 sm:p-8 flex gap-5 animate-fade-up"
-              style={{ animationDelay: `${i * 100}ms` }}
-            >
-              <div className="shrink-0 w-12 h-12 rounded-2xl bg-gradient-primary grid place-items-center glow-ring">
-                <h.icon className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-xl font-display font-semibold">{h.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{h.desc}</p>
-              </div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ type: "spring", stiffness: 50, damping: 18, delay: 0.1 }}
+          className="glass-card p-8 sm:p-12 space-y-8"
+        >
+          <p className="text-lg sm:text-xl leading-relaxed text-foreground/80 font-light">
+            I'm a <span className="font-medium text-foreground">BSE student at COMSATS University Islamabad</span>,
+            pursuing software engineering with an obsession for systems that think, scale, and survive. My focus runs
+            three parallel tracks — and I'm building deeply in each.
+          </p>
+
+          <div className="grid sm:grid-cols-3 gap-4">
+            {pillars.map((p, i) => (
+              <motion.div
+                key={p.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", stiffness: 80, damping: 16, delay: 0.2 + i * 0.1 }}
+                className={`${p.tint} rounded-2xl p-5 border border-white/60 backdrop-blur-xl flex items-center gap-3`}
+              >
+                <div className="w-10 h-10 rounded-xl glass-strong grid place-items-center">
+                  <p.icon className="w-5 h-5 text-primary" />
+                </div>
+                <span className="font-medium text-sm text-foreground/90">{p.label}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="space-y-4 pt-2">
+            <p className="text-sm uppercase tracking-widest text-muted-foreground font-medium">
+              Currently studying
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {coursework.map((c) => (
+                <span key={c} className="glass-chip">{c}</span>
+              ))}
             </div>
-          ))}
-        </div>
+            <p className="text-sm text-muted-foreground pt-2 italic">
+              Alongside an intensive self-directed technical education running through 2026.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
