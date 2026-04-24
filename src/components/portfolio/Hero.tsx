@@ -1,7 +1,31 @@
-import { ArrowRight, Sparkles } from "lucide-react";
-import avatar from "@/assets/avatar.png";
+import { useEffect, useState } from "react";
+import { ArrowRight, Sparkles, Pencil } from "lucide-react";
+import defaultAvatar from "@/assets/avatar.png";
+import { AvatarEditor, loadStoredAvatar } from "./AvatarEditor";
 
 export const Hero = () => {
+  const [avatarSrc, setAvatarSrc] = useState<string>(defaultAvatar);
+  const [editorOpen, setEditorOpen] = useState(false);
+  const [hasCustom, setHasCustom] = useState(false);
+
+  useEffect(() => {
+    const stored = loadStoredAvatar();
+    if (stored) {
+      setAvatarSrc(stored);
+      setHasCustom(true);
+    }
+  }, []);
+
+  const handleSave = (dataUrl: string | null) => {
+    if (dataUrl) {
+      setAvatarSrc(dataUrl);
+      setHasCustom(true);
+    } else {
+      setAvatarSrc(defaultAvatar);
+      setHasCustom(false);
+    }
+  };
+
   return (
     <section id="home" className="relative min-h-screen pt-32 pb-20 px-6 overflow-hidden">
       {/* Floating orbs */}
@@ -18,18 +42,26 @@ export const Hero = () => {
 
           <div className="flex items-center gap-5">
             {/* Glassy avatar — mobile/tablet inline */}
-            <div className="lg:hidden relative shrink-0">
+            <button
+              type="button"
+              onClick={() => setEditorOpen(true)}
+              className="lg:hidden relative shrink-0 group"
+              aria-label="Edit profile photo"
+            >
               <div className="absolute inset-0 rounded-full bg-gradient-primary blur-xl opacity-60" />
               <div className="glass relative w-20 h-20 rounded-full p-1 overflow-hidden">
                 <img
-                  src={avatar}
-                  alt="Salman Younus avatar"
+                  src={avatarSrc}
+                  alt="Profile avatar"
                   width={160}
                   height={160}
                   className="w-full h-full rounded-full object-cover"
                 />
+                <span className="absolute inset-0 rounded-full bg-background/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                  <Pencil className="w-4 h-4 text-foreground" />
+                </span>
               </div>
-            </div>
+            </button>
             <div className="space-y-2">
               <p className="text-primary font-medium tracking-widest uppercase text-sm">Hi, I'm</p>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05]">
@@ -60,6 +92,14 @@ export const Hero = () => {
             >
               Contact Me
             </a>
+            <button
+              type="button"
+              onClick={() => setEditorOpen(true)}
+              className="glass inline-flex items-center gap-2 px-5 py-3.5 rounded-full font-medium hover:border-primary/40 transition-colors text-sm"
+            >
+              <Pencil className="w-4 h-4 text-primary" />
+              {hasCustom ? "Change Photo" : "Upload Photo"}
+            </button>
           </div>
         </div>
 
@@ -70,26 +110,42 @@ export const Hero = () => {
             <div className="absolute -inset-6 bg-gradient-primary opacity-30 blur-3xl rounded-full animate-pulse-glow" />
             <div className="orb w-40 h-40 bg-accent/40 -top-8 -right-4" />
             <div className="glass-card relative p-5 flex items-center gap-5">
-              <div className="relative shrink-0">
+              <button
+                type="button"
+                onClick={() => setEditorOpen(true)}
+                className="relative shrink-0 group"
+                aria-label="Edit profile photo"
+              >
                 <div className="absolute inset-0 rounded-2xl bg-gradient-primary blur-md opacity-70" />
                 <div className="glass-strong relative w-28 h-28 rounded-2xl p-1 overflow-hidden">
                   <img
-                    src={avatar}
-                    alt="Salman Younus avatar"
+                    src={avatarSrc}
+                    alt="Profile avatar"
                     width={224}
                     height={224}
                     className="w-full h-full rounded-xl object-cover"
                   />
+                  <span className="absolute inset-0 rounded-xl bg-background/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                    <Pencil className="w-5 h-5 text-foreground" />
+                  </span>
                 </div>
                 <span className="absolute -bottom-1 -right-1 flex h-5 w-5">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-60 animate-ping" />
                   <span className="relative inline-flex rounded-full h-5 w-5 bg-gradient-primary border-2 border-background" />
                 </span>
-              </div>
+              </button>
               <div className="space-y-1">
                 <p className="text-xs font-semibold tracking-widest uppercase text-primary">Profile</p>
                 <h3 className="text-xl font-display font-semibold">Salman Younus</h3>
                 <p className="text-xs text-muted-foreground">SE Student • AI / DevOps / Cyber</p>
+                <button
+                  type="button"
+                  onClick={() => setEditorOpen(true)}
+                  className="mt-1 inline-flex items-center gap-1.5 text-xs text-primary hover:underline"
+                >
+                  <Pencil className="w-3 h-3" />
+                  {hasCustom ? "Change photo" : "Upload photo"}
+                </button>
               </div>
             </div>
           </div>
@@ -111,6 +167,13 @@ export const Hero = () => {
           </div>
         </div>
       </div>
+
+      <AvatarEditor
+        open={editorOpen}
+        onClose={() => setEditorOpen(false)}
+        onSave={handleSave}
+        currentSrc={hasCustom ? avatarSrc : null}
+      />
     </section>
   );
 };
