@@ -4,6 +4,7 @@ const links = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
+  { href: "#roadmap", label: "Roadmap" },
   { href: "#projects", label: "Projects" },
   { href: "#contact", label: "Contact" },
 ];
@@ -22,31 +23,28 @@ export const Navbar = () => {
     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl">
       <nav
         className={`glass-strong rounded-full px-4 sm:px-6 py-3 flex items-center justify-between transition-all duration-500 ${
-          scrolled ? "shadow-[0_8px_40px_hsl(220_80%_2%/0.6)]" : ""
+          scrolled ? "shadow-[0_20px_60px_-20px_hsl(211_100%_40%/0.35)]" : ""
         }`}
       >
         <a href="#home" className="flex items-center gap-2 group">
-          <span className="w-8 h-8 rounded-full bg-gradient-primary glow-ring grid place-items-center font-display font-bold text-primary-foreground text-sm">
+          <span className="w-9 h-9 rounded-full bg-gradient-primary grid place-items-center font-serif font-semibold text-primary-foreground text-base shadow-[0_4px_16px_-4px_hsl(211_100%_50%/0.5)]">
             S
           </span>
-          <span className="font-display font-semibold tracking-tight hidden sm:inline">Salman</span>
+          <span className="font-serif text-lg tracking-tight hidden sm:inline">Salman</span>
         </a>
         <ul className="hidden md:flex items-center gap-1">
           {links.map((l) => (
             <li key={l.href}>
               <a
                 href={l.href}
-                className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full transition-colors hover:bg-white/5"
+                className="px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full transition-all hover:bg-white/40"
               >
                 {l.label}
               </a>
             </li>
           ))}
         </ul>
-        <a
-          href="#contact"
-          className="text-sm font-medium px-4 py-2 rounded-full bg-gradient-primary text-primary-foreground hover:opacity-90 transition-opacity glow-ring"
-        >
+        <a href="#contact" className="glass-button-primary text-sm py-2 px-4">
           Let's talk
         </a>
       </nav>
