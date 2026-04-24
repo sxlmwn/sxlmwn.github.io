@@ -44,8 +44,8 @@ export const Projects = () => {
           className="text-center mb-14 space-y-4"
         >
           <div className="glass-chip mx-auto">In the Works</div>
-          <h2 className="font-serif text-5xl sm:text-6xl tracking-tight">
-            Selected <span className="italic text-shimmer">projects</span>
+          <h2 className="font-display font-semibold text-5xl sm:text-6xl tracking-tight">
+            Selected <span className="text-shimmer">projects</span>
           </h2>
           <p className="text-foreground/70 max-w-xl mx-auto font-light">
             Real builds across the three tracks. Live demos & write-ups arriving through 2026.
@@ -68,7 +68,7 @@ export const Projects = () => {
                 </div>
                 <span className="glass-chip text-[10px] uppercase tracking-widest">{p.tag}</span>
               </div>
-              <h3 className="font-serif text-2xl leading-tight relative z-10">{p.title}</h3>
+              <h3 className="font-display font-semibold text-2xl leading-tight relative z-10">{p.title}</h3>
               <p className="text-sm text-foreground/70 leading-relaxed font-light relative z-10">
                 {p.description}
               </p>

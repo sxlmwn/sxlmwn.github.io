@@ -55,8 +55,8 @@ export const Skills = () => {
           className="text-center mb-14 space-y-4"
         >
           <div className="glass-chip mx-auto">Skills & Stack</div>
-          <h2 className="font-serif text-5xl sm:text-6xl tracking-tight">
-            The <span className="italic text-shimmer">toolkit</span>
+          <h2 className="font-display font-semibold text-5xl sm:text-6xl tracking-tight">
+            The <span className="text-shimmer">toolkit</span>
           </h2>
           <p className="text-foreground/70 max-w-xl mx-auto font-light">
             Three disciplines, deeply intertwined. Each pillar built on real projects, labs, and certifications in motion.
@@ -77,7 +77,7 @@ export const Skills = () => {
                 <div className="w-12 h-12 rounded-2xl glass-strong grid place-items-center text-2xl">
                   {t.emoji}
                 </div>
-                <h3 className={`font-serif text-2xl ${t.accentClass}`}>{t.title}</h3>
+                <h3 className={`font-display font-semibold text-2xl ${t.accentClass}`}>{t.title}</h3>
               </div>
 
               <div className="flex flex-wrap gap-2 pt-1">

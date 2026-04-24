@@ -72,8 +72,8 @@ export const Roadmap = () => {
           className="text-center mb-14 space-y-4"
         >
           <div className="glass-chip mx-auto">Roadmap · 2026</div>
-          <h2 className="font-serif text-5xl sm:text-6xl tracking-tight">
-            Three parallel <span className="italic text-shimmer">26-week</span> journeys
+          <h2 className="font-display font-semibold text-5xl sm:text-6xl tracking-tight">
+            Three parallel <span className="text-shimmer">26-week</span> journeys
           </h2>
           <p className="text-foreground/70 max-w-2xl mx-auto font-light">
             A self-directed curriculum running across AI, DevOps, and Security — from foundations to certifications.
@@ -96,7 +96,7 @@ export const Roadmap = () => {
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-muted-foreground">Track {ti + 1}</p>
-                    <h3 className="font-serif text-2xl">{t.title}</h3>
+                    <h3 className="font-display font-semibold text-2xl">{t.title}</h3>
                   </div>
                 </div>
 
