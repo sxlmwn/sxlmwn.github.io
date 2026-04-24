@@ -77,10 +77,10 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 60, damping: 18 }}
-              className="font-serif text-6xl sm:text-7xl lg:text-8xl leading-[0.95] tracking-tight"
+              className="font-display font-semibold text-6xl sm:text-7xl lg:text-8xl leading-[0.95] tracking-tight"
             >
               <span className="block text-foreground">Salman</span>
-              <span className="block text-shimmer italic">Younus</span>
+              <span className="block text-shimmer">Younus</span>
             </motion.h1>
 
             <motion.p

@@ -24,8 +24,8 @@ export const About = () => {
             <GraduationCap className="w-3.5 h-3.5 text-primary" />
             About
           </div>
-          <h2 className="font-serif text-5xl sm:text-6xl tracking-tight">
-            Three paths, <span className="italic text-shimmer">one engineer</span>
+          <h2 className="font-display font-semibold text-5xl sm:text-6xl tracking-tight">
+            Three paths, <span className="text-shimmer">one engineer</span>
           </h2>
         </motion.div>
 
@@ -69,7 +69,7 @@ export const About = () => {
                 <span key={c} className="glass-chip">{c}</span>
               ))}
             </div>
-            <p className="text-sm text-muted-foreground pt-2 italic">
+            <p className="text-sm text-muted-foreground pt-2">
               Alongside an intensive self-directed technical education running through 2026.
             </p>
           </div>

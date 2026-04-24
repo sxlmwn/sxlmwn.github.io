@@ -27,10 +27,10 @@ export const Navbar = () => {
         }`}
       >
         <a href="#home" className="flex items-center gap-2 group">
-          <span className="w-9 h-9 rounded-full bg-gradient-primary grid place-items-center font-serif font-semibold text-primary-foreground text-base shadow-[0_4px_16px_-4px_hsl(211_100%_50%/0.5)]">
+          <span className="w-9 h-9 rounded-full bg-gradient-primary grid place-items-center font-display font-semibold font-semibold text-primary-foreground text-base shadow-[0_4px_16px_-4px_hsl(211_100%_50%/0.5)]">
             S
           </span>
-          <span className="font-serif text-lg tracking-tight hidden sm:inline">Salman</span>
+          <span className="font-display font-semibold text-lg tracking-tight hidden sm:inline">Salman</span>
         </a>
         <ul className="hidden md:flex items-center gap-1">
           {links.map((l) => (

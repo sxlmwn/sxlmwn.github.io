@@ -19,8 +19,8 @@ export const Contact = () => {
           className="glass-card p-10 sm:p-14 text-center space-y-7"
         >
           <div className="glass-chip mx-auto">Let's Connect</div>
-          <h2 className="font-serif text-5xl sm:text-6xl tracking-tight">
-            Let's build <span className="italic text-shimmer">something</span>
+          <h2 className="font-display font-semibold text-5xl sm:text-6xl tracking-tight">
+            Let's build <span className="text-shimmer">something</span>
           </h2>
           <p className="text-foreground/70 max-w-xl mx-auto font-light text-lg">
             Open to internships, research, and ambitious side-projects across AI, DevOps, and Security.
